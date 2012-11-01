@@ -83,3 +83,17 @@ void test_create_spot() {
 	testFlag = interface.get_spot_status(30, 30);
 	_AssertFlag(testFlag);
 }
+
+void test_get_entry_count() {
+	bool testFlag = false;
+	MySQL_Interface interface;
+
+	setup_test_table(interface.get_con());
+	print_test_f_name("get_entry_count");
+	handle_test_id("4.1");
+	cout << "\tGets the count of entries for a table." << endl;
+	cout << "\tShould return 100 for this test case." << endl;
+
+	testFlag = (interface.get_entry_count() != 100);
+	_AssertFlag(testFlag);
+}

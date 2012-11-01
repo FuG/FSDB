@@ -7,6 +7,9 @@
 
 #include "testing.h"
 
+Test *start, *curr;
+bool masterTestFlag;
+
 int main() {
 	bool boolResults;
 	int pocID = 2, sensorID = 3;
@@ -18,6 +21,9 @@ int main() {
 	test_get_spot_status();
 	test_set_spot_status();
 	test_create_spot();
+	test_get_entry_count();
+
+	print_test_master();
 
 	return 0;
 }
@@ -58,7 +64,7 @@ void new_test(string testID)
  * Function: print_test_id
  */
 void handle_test_id(string testID) {
-	new_test(testID);
+	//new_test(testID);
 	cout << " --Test Id: " << testID << endl;
 }
 
@@ -125,6 +131,6 @@ void print_test_master() {
 	if (!masterTestFlag) {
 		cout << "All tests passed!" << endl << endl;
 	} else {
-
+		cout << "One or more tests failed!" << endl << endl;
 	}
 }

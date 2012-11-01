@@ -13,22 +13,23 @@
 typedef struct test {
 	string testID;
 	bool result;
-	Test *next;
+	struct test *next;
 } Test;
 
-Test *start, *curr;
-bool masterTestFlag;
+extern Test *start, *curr;
+extern bool masterTestFlag;
 
 void _AssertFlag(bool condition);
 void handle_test_id(string testID);
 void print_test_f_name(string functionName);
 void setup_test_table(Connection *con);
 void setup_test_table(Connection *con, int numOfPocs, int sensorsPerPoc);
-void print_master_test();
+void print_test_master();
 
 // Test Functions
 void test_get_spot_status();
 void test_set_spot_status();
 void test_create_spot();
+void test_get_entry_count();
 
 #endif /* UNIT_TESTS_H_ */
