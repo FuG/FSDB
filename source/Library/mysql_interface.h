@@ -40,6 +40,8 @@ class MySQL_Interface {
 	// Setters
 	void set_spot_status(int pocID, int sensorID, bool status);
 
+	void create_table();
+	void create_table(string tableName);
 	void create_spot(int pocID, int sensorID);
 	void create_spot(int pocID, int sensorID, bool status);
 	int get_entry_count();

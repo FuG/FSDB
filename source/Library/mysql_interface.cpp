@@ -33,6 +33,35 @@ MySQL_Interface::~MySQL_Interface() {
 }
 
 /*
+ * Public Function: create_table
+ */
+void MySQL_Interface::create_table() {
+	create_table(DEFAULT_SCHEMA);
+}
+
+/*
+ * Public Overloaded Function: create_table
+ */
+void MySQL_Interface::create_table(string tableName) {
+	sql::PreparedStatement *pstmt;
+
+	try {
+		pstmt = con->prepareStatement("CREATE TABLE IF NOT EXISTS ParkingSpot ("
+				"PocID int NOT NULL,"
+				"SensorID int NOT NULL,"
+				"SpotStatus int NOT NULL,"
+				"StartTime datetime DEFAULT NULL,"
+				"ExpireTime datetime DEFAULT NULL,"
+				"PRIMARY KEY (PocID, SensorID),"
+				"UNIQUE KEY LocationSensor_UNIQUE (PocID, SensorID))");
+		pstmt->execute();
+		delete pstmt;
+	} catch (sql::SQLException &e) {
+		print_error(e, "get_spot_status");
+	}
+}
+
+/*
  * Public Function: get_spot_status
  * *(bool *status) set to:	- 'true' signifying spot is taken
  * 							- 'false' signifying spot is available

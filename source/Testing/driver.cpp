@@ -22,6 +22,7 @@ int main() {
 	test_set_spot_status();
 	test_create_spot();
 	test_get_entry_count();
+	test_create_table();
 
 	print_test_master();
 

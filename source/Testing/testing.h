@@ -31,5 +31,6 @@ void test_get_spot_status();
 void test_set_spot_status();
 void test_create_spot();
 void test_get_entry_count();
+void test_create_table();
 
 #endif /* UNIT_TESTS_H_ */

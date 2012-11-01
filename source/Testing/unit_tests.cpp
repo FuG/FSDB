@@ -51,7 +51,7 @@ void test_set_spot_status() {
 	_AssertFlag(testFlag);
 
 	handle_test_id("2.2");
-	cout << "\tTrying to set SpotStatus in a non-existing entry should create it instead." << endl;
+	cout << "\tTrying to set SpotStatus in non-existant entry should create it instead." << endl;
 	cout << "\tSpotStatus should be initialized to 0 by default." << endl;
 	cout << "\tNote: Indirectly tests function create_spot." << endl;
 	interface.create_spot(15, 15);
@@ -96,4 +96,26 @@ void test_get_entry_count() {
 
 	testFlag = (interface.get_entry_count() != 100);
 	_AssertFlag(testFlag);
+}
+
+void test_create_table() {
+	bool testFlag = false;
+	MySQL_Interface interface;
+
+	print_test_f_name("create_table");
+	handle_test_id("5.1");
+	cout << "\tCreates the table \"test\"." << endl;
+	cout << "\tIf no exception thrown, assume test passes." << endl;
+
+	interface.create_table();
+	_AssertFlag(testFlag);
+
+	handle_test_id("5.2");
+	cout << "\tWhen table \"test\" already exists," << endl;
+	cout << "\twill not attempt to create another table called \"test\"." << endl;
+	cout << "\tIf no exception thrown, assume test passes." << endl;
+
+	interface.create_table();
+	_AssertFlag(testFlag);
+
 }
