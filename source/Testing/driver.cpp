@@ -26,6 +26,10 @@ int main() {
 
 	print_test_master();
 
+	stress_setup();
+	stress_test_get_spot_status();
+	stress_test_set_spot_status();
+
 	return 0;
 }
 
@@ -74,6 +78,13 @@ void handle_test_id(string testID) {
  */
 void print_test_f_name(string functionName) {
 	cout << "### Function: " << functionName << " ###" << endl;
+}
+
+/*
+ * Function: print_stress_f_name
+ */
+void print_stress_f_name(string functionName) {
+	cout << "### Stressing: " << functionName << " ###" << endl;
 }
 
 /*
@@ -130,8 +141,8 @@ void setup_test_table(Connection *con, int numOfPocs, int sensorsPerPoc) {
  */
 void print_test_master() {
 	if (!masterTestFlag) {
-		cout << "All tests passed!" << endl << endl;
+		cout << "All unit tests passed!" << endl << endl;
 	} else {
-		cout << "One or more tests failed!" << endl << endl;
+		cout << "One or more unit tests failed!" << endl << endl;
 	}
 }
